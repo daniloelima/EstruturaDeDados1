@@ -1,3 +1,5 @@
-int main(agv, agc[]){
+#include <stdio.h>
+
+int main(char * argv, int argc){
     
 }
