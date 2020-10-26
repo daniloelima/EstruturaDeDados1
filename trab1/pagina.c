@@ -1,13 +1,14 @@
 #include "pagina.h"
 #include "contribuicao.h"
+#include "link.h"
 
-struct celPagina{
-    //pagina
-    //ponteiro pra proximapagina
+struct celpagina{
+    Pagina pagi; //pagina
+    struct celPagina * proxPag; //ponteiro pra proxima pagina
 };
 
 struct pagina{
-    //ponteiro pra primeira celulaContribuicao
-    //ponteiro pra primeira celulaLinks
-    //string nome
+    char * nomePagina; //string nome
+    CelContribuicao * listaContribuicao; //ponteiro pra primeira celulaContribuicao
+    CelLink * listaLinks; //ponteiro pra primeira celulaLinks
 };

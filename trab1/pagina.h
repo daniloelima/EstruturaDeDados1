@@ -2,6 +2,6 @@
 #define pagina_H_
 
 typedef struct pagina Pagina;
-typedef struct celPagina CelPagina;
+typedef struct celpagina CelPagina;
 
 #endif

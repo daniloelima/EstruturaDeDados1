@@ -3,6 +3,6 @@
 #include "editor.h"
 
 struct wiked{
-    //ponteiro primeira celulapag
-    //ponteiro primeira celulaeditor
+    CelPagina * ppags; //ponteiro primeira celulapag
+    CelEditor * pedits; //ponteiro primeira celulaeditor
 };

@@ -3,12 +3,18 @@
 
 struct celcontribuicao{
     //contribuicao
+    Contribuicao cont;
     //ponteiro para prox contribuicao
+    struct celcontribuicao * proxcont;
 };
 
 struct contribuicao{
     //string nome (arquivo)
-    //ponteiro para o editor
+    char * nome;
     //string texto 
-    //indicador de uso (int)
+    char * texto;
+    //ponteiro para o editor
+    Editor * edit;
+    //indicador de uso 
+    char ativo;
 };
