@@ -1,5 +1,6 @@
 #include "contribuicao.h"
 #include "editor.h"
+#include <stdio.h>
 
 struct celcontribuicao{
     //contribuicao
@@ -11,8 +12,8 @@ struct celcontribuicao{
 struct contribuicao{
     //string nome (arquivo)
     char * nome;
-    //string texto 
-    char * texto;
+    //FILE texto 
+    FILE* texto;
     //ponteiro para o editor
     Editor * edit;
     //indicador de uso 
