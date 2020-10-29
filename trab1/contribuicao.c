@@ -2,6 +2,11 @@
 #include "editor.h"
 #include <stdio.h>
 
+struct listacontribuicao{
+    CelContribuicao * pricontri;
+    CelContribuicao * ultcontri;
+};
+
 struct celcontribuicao{
     //contribuicao
     Contribuicao cont;

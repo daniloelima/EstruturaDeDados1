@@ -5,31 +5,30 @@
 
 //sentinela que indica as 2 listas (pagina e editores)
 struct wiked{
-    listaPagina * pripagi; //ponteiro primeira celulapag
-    listaPagina * ultpagi; //ponteiro ultima
-    listaEditor * priedit; //ponteiro primeira celulaeditor
-    listaEditor * ultedit; //ponteiro ultima
+    listaPagina * listapagi;
+    listaEditor * listaedit;
 };
 
 WikED * inicializaWikED(){
     WikED * wiki = (WikED*) malloc (sizeof(struct wiked));
     
-    wiki->pripagi = NULL;
-    wiki->ultpagi = NULL;
-    wiki->priedit = NULL;
-    wiki->ultedit = NULL;
+    wiki->listapagi = inicializaListaPagina();
+    wiki->listaedit = inicializaListaEditor();
 
     return wiki;
 }
 
+void liberaWiki(WikED * wiki){
+    liberaListaPagina(wiki->listapagi);
+    liberaListaEditor(wiki->listaedit);
+}
+
 void leituraEntrada(FILE * entrada, WikED * wiki){
     char funcao[MAX_TAM];
-    while(fscanf(entrada, "%s ", funcao) == 1 && !strcmp(funcao, "FIM")){
+    while(fscanf(entrada, "%s ", funcao) == 1 && strcmp(funcao, "FIM")){
         //chama a funcao "leituraFuncao" que identifica qual a funcao
         leituraFuncao(entrada, wiki, funcao);
     }
-
-    liberaWikED(wiki);
 }
 
 void leituraFuncao(FILE * entrada, WikED * wiki, char * funcao){
@@ -75,6 +74,7 @@ void leituraFuncao(FILE * entrada, WikED * wiki, char * funcao){
         char nomepaginaOrigem[MAX_TAM], nomepaginaDestino[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepaginaOrigem, nomepaginaDestino);
     }
+    
     else if(!strcmp(funcao, "IMPRIMEWIKED")){
         // imprime a lista
     }

@@ -1,16 +1,82 @@
 #include "editor.h"
-#include "contribuicao.h"
+
+struct listaeditor{
+    celulaEditor * priedit;
+    celulaEditor * ultedit;
+};
 
 struct celeditor{
-    //editor
-    Editor edi;
-    //prox editor
-    struct celeditor * proxedi;
-};
+    Editor * edit; //editor
+    celulaEditor * proxedit; //prox editor
+}; 
 
 struct editor{
-    //nome
     char * nome;
-    //ponteiro pra primeira celcontribuicao
-    CelContribuicao * con;
 };
+
+//funcoes de lista
+listaEditor * inicializaListaEditor(){
+    listaEditor * lista = (listaEditor*) malloc(sizeof(listaEditor));
+
+    lista->priedit = NULL;
+    lista->ultedit = NULL;
+
+    return lista;
+}
+
+void insereEditorLista(listaEditor * listaeditor, celulaEditor * novoedit){
+    listaeditor->ultedit = novoedit;
+}
+
+void imprimeListaEditor(listaEditor * listaedit){
+    celulaEditor * paux;
+    for(paux = listaedit->priedit; paux != NULL; paux = paux->proxedit){
+        imprimeEditor(paux);
+    }
+}
+
+void liberaListaEditor(listaEditor * listaedit){
+    celulaEditor * paux;
+    for(paux = listaedit->priedit->proxedit; paux != NULL; listaedit->priedit = paux){
+        liberaCelulaEditor(listaedit->priedit);
+    }
+
+    free(listaedit->priedit);
+    free(listaedit->ultedit);
+    free(listaedit);
+}
+
+//funcoes de celula
+void liberaCelulaEditor(celulaEditor * celedit){
+    liberaEditor(celedit->edit);
+}
+
+celulaEditor * inicializaCelulaEditor(char * nome){
+    celulaEditor * novacelula = (celulaEditor*) malloc(sizeof(celulaEditor));
+    
+    novacelula->edit = inicializaEditor(nome);
+    novacelula->proxedit;
+
+    return novacelula;
+}
+
+//funcoes de editor
+char * retornaNomeEditor(Editor * edit){
+    return edit->nome;
+}
+
+void imprimeEditor(Editor * edit){
+    printf("");
+}
+
+void liberaEditor(Editor * edit){
+    free(edit->nome);
+    free(edit);
+}
+
+Editor * inicializaEditor(char * nome){
+    Editor * novoedit = (Editor*) malloc(sizeof(Editor));
+    novoedit->nome = nome;
+
+    return novoedit;
+}
