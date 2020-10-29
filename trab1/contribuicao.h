@@ -3,5 +3,8 @@
 
 typedef struct contribuicao Contribuicao;
 typedef struct celcontribuicao CelContribuicao;
+typedef struct listacontribuicao listaContribuicao;
+
+listaPagina* inicializaListaPagina();
 
 #endif
