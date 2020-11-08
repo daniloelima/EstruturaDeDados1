@@ -1,6 +1,7 @@
 #include "aluno.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 
 struct aluno{
     char* nome;
@@ -17,7 +18,7 @@ tAluno * inicializaAluno(int matricula, char* nome, float CR){
     return novoaluno;
 }
 void imprimeAluno(tAluno * aluno){
-    
+    printf("nome: %s, matricula: %d, CR: %.2f\n", aluno->nome, aluno->matricula, aluno->CR);
 }
 int RetornaMatricula(tAluno * aluno){
     return aluno->matricula;
@@ -30,5 +31,6 @@ float RetornaCR(tAluno * aluno){
 }
 
 void destroiAluno(tAluno * aluno){
-
+    free(aluno->nome);
+    free(aluno);
 }

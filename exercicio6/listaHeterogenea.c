@@ -9,7 +9,7 @@
 #define ALUN 'A'
 
 typedef struct cel{
-    tCelula* prox;
+    struct cel * prox;
     void* item; //tProfessor ou tAluno
     char tipo;
 }tCelula;
@@ -59,12 +59,12 @@ void ImprimeLista(ListaHet* lista){
 
     for(paux = lista->Pri; paux != NULL; paux = paux->prox){
         if(paux->tipo == ALUN){
-            printf("Aluno: ");
-            ImprimeAluno(paux->item);
+            printf("\nAluno: ");
+            imprimeAluno(paux->item);
         }
         else if(paux->tipo == PROF){
-            printf("Professor: ");
-            ImprimeProfessor(paux->item);
+            printf("\nProfessor: ");
+            imprimeProfessor(paux->item);
         }
         else{
             printf("Erro na Imprime Lista");

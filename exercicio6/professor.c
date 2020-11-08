@@ -20,3 +20,20 @@ tProfessor* inicializaProfessor(int siape, char* nome, float salario){
     return novoprofessor;
 }
 
+void imprimeProfessor(tProfessor * professor){
+    printf("nome: %s, siape: %d, salario: %.2f\n", professor->nome, professor->siape, professor->salario);
+}
+
+int retornaSiape(tProfessor * professor){
+    return professor->siape;
+}
+char* retornaNome(tProfessor * professor){
+    return professor->nome;
+}
+float retornaSalario(tProfessor * professor){
+    return professor->salario;
+}
+void destroiProfessor(tProfessor * professor){
+    free(professor->nome);
+    free(professor);
+}
