@@ -12,7 +12,7 @@ struct aluno{
 tAluno * inicializaAluno(int matricula, char* nome, float CR){
     tAluno * novoaluno = (tAluno*) malloc(sizeof(tAluno));
     novoaluno->matricula = matricula;
-    strcpy(novoaluno->nome, nome);
+    novoaluno->nome = strdup(nome);
     novoaluno->CR = CR;
 
     return novoaluno;

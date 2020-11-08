@@ -13,8 +13,7 @@ tProfessor* inicializaProfessor(int siape, char* nome, float salario){
     tProfessor * novoprofessor =  (tProfessor*) malloc(sizeof(tProfessor));
 
     novoprofessor->siape = siape;
-
-    strcpy(novoprofessor->nome, nome);
+    novoprofessor->nome =  strdup(nome);
     novoprofessor->salario = salario;
 
     return novoprofessor;

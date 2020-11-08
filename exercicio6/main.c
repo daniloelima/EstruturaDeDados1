@@ -19,7 +19,7 @@ int main(){
 
     ImprimeLista(lista);
 
-    printf("\nValor do churras: %.2f", ValorChurrasco(lista));
+    printf("\nValor do churras: %.2f\n", ValorChurrasco(lista));
     
     DestroiLista(lista);
 
