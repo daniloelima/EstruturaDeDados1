@@ -2,6 +2,7 @@
 #define link_H_
 
 typedef struct link Link;
-typedef struct cellink CelLink;
+typedef struct cellink celLink;
+
 
 #endif

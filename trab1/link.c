@@ -1,8 +1,8 @@
 #include "link.h"
 #include "pagina.h"
 
-struct celLink{
-    Link lin;
+struct cellink{
+    Link link;
     struct cellink * proxLink;
 };
 
