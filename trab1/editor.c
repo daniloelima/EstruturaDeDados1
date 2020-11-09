@@ -25,7 +25,13 @@ listaEditor * inicializaListaEditor(){
 }
 
 void insereEditorLista(listaEditor * listaeditor, celulaEditor * novoedit){
-    listaeditor->ultedit = novoedit;
+    if(listaeditor->priedit==NULL){
+        listaeditor->priedit = novoedit;
+        listaeditor->ultedit = novoedit;
+    }else{
+        listaeditor->ultedit->proxedit = novoedit;
+        listaeditor->ultedit = novoedit;
+    }
 }
 
 void imprimeListaEditor(listaEditor * listaedit){
@@ -47,13 +53,11 @@ void liberaListaEditor(listaEditor * listaedit){
 }
 
 //funcoes de celula
-
-
 celulaEditor * inicializaCelulaEditor(char * nome){
     celulaEditor * novacelula = (celulaEditor*) malloc(sizeof(celulaEditor));
     
     novacelula->edit = inicializaEditor(nome);
-    novacelula->proxedit;
+    novacelula->proxedit = NULL;
 
     return novacelula;
 }
