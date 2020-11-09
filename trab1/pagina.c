@@ -1,4 +1,7 @@
 #include "pagina.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
 
 struct listapagina{
     celulaPagina * pripagi;
@@ -12,7 +15,7 @@ struct celpagina{
 
 struct pagina{
     char * nomePagina; //string nome
-    char * nomeArquivoPagina;
+    FILE * pagina;
     listaContribuicao * listaContribuicao; //ponteiro pra primeira celulaContribuicao
     CelLink * listaLinks; //ponteiro pra primeira celulaLinks
 };
@@ -25,3 +28,31 @@ listaPagina * inicializaListaPagina(){
 
     return lista;
 }
+
+void imprimeListaPagina(listaPagina* lista){
+
+}
+
+void liberaListaPagina(listaPagina* lista){
+
+}
+
+celulaPagina* inicializaCelulaPagina(char*);
+void liberaCelulaPagina(celulaPagina*);
+
+Pagina* inicializaPagina(char * nomepagina, char * nomearquivo){
+    Pagina * novapagina = (Pagina*) malloc(sizeof(Pagina));
+
+    novapagina->nomePagina = strdup(nomepagina);
+    novapagina->pagina = fopen(nomepagina, "w");
+    //novapagina->listaContribuicao =  inicializaListaContribuicao();
+    //novapagina->listaLinks = inicializaListaLink();
+
+    return novapagina;
+}
+
+void imprimePagina(Pagina*);
+void liberaPagina(Pagina*);
+
+char* retornaNomePagina(Pagina*);
+char* retornaNomeArquivo(Pagina*);

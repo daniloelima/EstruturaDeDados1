@@ -9,6 +9,19 @@ typedef struct pagina Pagina;
 typedef struct celpagina celulaPagina;
 typedef struct listapagina listaPagina;
 
-listaEditor* inicializaListaEditor();
+listaPagina * inicializaListaPagina();
+void imprimeListaPagina(listaPagina*);
+void liberaListaPagina(listaPagina*);
+
+celulaPagina* inicializaCelulaPagina(char*);
+void liberaCelulaPagina(celulaPagina*);
+
+Pagina* inicializaPagina(char *, char*); 
+void imprimePagina(Pagina*); 
+void liberaPagina(Pagina*);
+
+char* retornaNomePagina(Pagina*);
+char* retornaNomeArquivo(Pagina*);
+
 
 #endif
