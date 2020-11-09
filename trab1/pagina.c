@@ -17,7 +17,7 @@ struct pagina{
     char * nomePagina; //string nome
     FILE * pagina;
     listaContribuicao * listaContribuicao; //ponteiro pra primeira celulaContribuicao
-    CelLink * listaLinks; //ponteiro pra primeira celulaLinks
+    celLink * listaLinks; //ponteiro pra primeira celulaLinks
 };
 
 listaPagina * inicializaListaPagina(){
