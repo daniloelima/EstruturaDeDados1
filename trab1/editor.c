@@ -47,9 +47,7 @@ void liberaListaEditor(listaEditor * listaedit){
 }
 
 //funcoes de celula
-void liberaCelulaEditor(celulaEditor * celedit){
-    liberaEditor(celedit->edit);
-}
+
 
 celulaEditor * inicializaCelulaEditor(char * nome){
     celulaEditor * novacelula = (celulaEditor*) malloc(sizeof(celulaEditor));
@@ -60,13 +58,24 @@ celulaEditor * inicializaCelulaEditor(char * nome){
     return novacelula;
 }
 
+void liberaCelulaEditor(celulaEditor * celedit){
+    liberaEditor(celedit->edit);
+}
+
 //funcoes de editor
+Editor * inicializaEditor(char * nome){
+    Editor * novoeditor = (Editor*) malloc(sizeof(Editor));
+    novoeditor->nome = strdup(nome);
+
+    return novoeditor;
+}
+
 char * retornaNomeEditor(Editor * edit){
     return edit->nome;
 }
 
 void imprimeEditor(Editor * edit){
-    printf("");
+    printf("Nome: %s", edit->nome);
 }
 
 void liberaEditor(Editor * edit){

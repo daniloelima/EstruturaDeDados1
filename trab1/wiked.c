@@ -35,6 +35,7 @@ void leituraFuncao(FILE * entrada, WikED * wiki, char * funcao){
     if(!strcmp(funcao, "INSEREPAGINA")){
         char nomepagina[MAX_TAM], arquivopagina[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepagina, arquivopagina);
+        
         //chama a funcao que insere pagina na lista da wiki
     }
     else if(!strcmp(funcao, "RETIRAPAGINA")){
@@ -44,7 +45,9 @@ void leituraFuncao(FILE * entrada, WikED * wiki, char * funcao){
     }
     else if(!strcmp(funcao, "INSEREEDITOR")){
         char nomeeditor[MAX_TAM];
+        Editor * novoeditor;
         fscanf(entrada, " %s ", nomeeditor);
+        novoeditor = inicializaEditor(nomeeditor);
         //chama a funcao que insere um editor na lista da wiki
     }
     else if(!strcmp(funcao, "RETIRAEDITOR")){
