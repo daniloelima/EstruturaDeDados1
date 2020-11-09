@@ -23,6 +23,7 @@ void liberaWiki(WikED * wiki){
     liberaListaEditor(wiki->listaedit);
 }
 
+
 void leituraEntrada(FILE * entrada, WikED * wiki){
     char funcao[MAX_TAM];
     while(fscanf(entrada, "%s ", funcao) == 1 && strcmp(funcao, "FIM")){
@@ -45,25 +46,22 @@ void leituraFuncao(FILE * entrada, WikED * wiki, char * funcao){
     }
     else if(!strcmp(funcao, "INSEREEDITOR")){
         char nomeeditor[MAX_TAM];
-        Editor * novoeditor;
+        celulaEditor * novacelula;
         fscanf(entrada, " %s ", nomeeditor);
-        novoeditor = inicializaEditor(nomeeditor);
-        //chama a funcao que insere um editor na lista da wiki
+        novacelula = inicializaCelulaEditor(nomeeditor);
+        insereEditorLista(wiki->listaedit, novacelula);
     }
     else if(!strcmp(funcao, "RETIRAEDITOR")){
         char nomeeditor[MAX_TAM];
         fscanf(entrada, " %s ", nomeeditor);
-        //
     }
     else if(!strcmp(funcao, "INSERECONTRIBUICAO")){
         char  nomepagina[MAX_TAM], nomeeditor[MAX_TAM], arquivocontribuicao[MAX_TAM];
         fscanf(entrada, " %s ", nomeeditor);
-        //
     }
     else if(!strcmp(funcao, "RETIRACONTRIBUICAO")){
         char  nomepagina[MAX_TAM], nomeeditor[MAX_TAM], arquivocontribuicao[MAX_TAM];
         fscanf(entrada, " %s ", nomeeditor);
-        //
     }
     else if(!strcmp(funcao, "INSERELINK")){
         char nomepaginaOrigem[MAX_TAM], nomepaginaDestino[MAX_TAM];

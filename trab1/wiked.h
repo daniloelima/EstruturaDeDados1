@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "editor.h"
+#include "pagina.h"
 
 typedef struct wiked WikED;
 
