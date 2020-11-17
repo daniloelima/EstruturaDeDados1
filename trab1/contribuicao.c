@@ -9,7 +9,7 @@ struct listacontribuicao{
 
 struct celcontribuicao{
     //contribuicao
-    Contribuicao cont;
+    Contribuicao * cont;
     //ponteiro para prox contribuicao
     struct celcontribuicao * proxcont;
 };

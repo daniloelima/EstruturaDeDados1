@@ -8,9 +8,10 @@ typedef struct celeditor celulaEditor;
 typedef struct listaeditor listaEditor;
 
 listaEditor * inicializaListaEditor();
-void insereEditorLista(listaEditor*, celulaEditor*);
 void imprimeListaEditor(listaEditor*);
 void liberaListaEditor(listaEditor*);
+
+void insereCelulaEditorLista(listaEditor*, celulaEditor*);
 
 celulaEditor* inicializaCelulaEditor(char*);
 void liberaCelulaEditor(celulaEditor*);
