@@ -24,32 +24,37 @@ void liberaWiki(WikED * wiki){
 }
 
 
-void leituraEntrada(FILE * entrada, WikED * wiki){
-    char funcao[MAX_TAM];
-    while(fscanf(entrada, "%s ", funcao) == 1 && strcmp(funcao, "FIM")){
-        //chama a funcao "leituraFuncao" que identifica qual a funcao
-        leituraFuncao(entrada, wiki, funcao);
-    }
-}
+// void leituraEntrada(FILE * entrada, WikED * wiki){
+//     char funcao[MAX_TAM];
+//     while(fscanf(entrada, "%s ", funcao) == 1 && strcmp(funcao, "FIM")){
+//         //chama a funcao "leituraFuncao" que identifica qual a funcao
+//         leituraFuncao(entrada, wiki, funcao);
+//     }
+// }
 
-void leituraFuncao(FILE * entrada, WikED * wiki, char * funcao){
+void leituraFuncao(FILE * entrada, FILE* log, WikED * wiki, char * funcao){
     if(!strcmp(funcao, "INSEREPAGINA")){
         char nomepagina[MAX_TAM], arquivopagina[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepagina, arquivopagina);
-        
-        //chama a funcao que insere pagina na lista da wiki
+
+        insereCelulaPaginaLista(wiki->listapagi, inicializaCelulaPagina(nomepagina, arquivopagina));
     }
     else if(!strcmp(funcao, "RETIRAPAGINA")){
         char nomepagina[MAX_TAM];
         fscanf(entrada, " %s ", nomepagina);
-        //chama a funcao que retira a pagina na lista da wiki
+        
+        retiraCelulaPaginaLista(log, wiki->listapagi, nomepagina);
     }
     else if(!strcmp(funcao, "INSEREEDITOR")){
         char nomeeditor[MAX_TAM];
-        celulaEditor * novacelula;
         fscanf(entrada, " %s ", nomeeditor);
-        novacelula = inicializaCelulaEditor(nomeeditor);
-        insereEditorLista(wiki->listaedit, novacelula);
+
+        // celulaEditor * novacelula;
+        // novacelula = inicializaCelulaEditor(nomeeditor);
+        // insereEditorLista(wiki->listaedit, novacelula);
+        
+        insereCelulaEditorLista(wiki->listaedit, inicializaCelulaEditor(nomeeditor));
+
     }
     else if(!strcmp(funcao, "RETIRAEDITOR")){
         char nomeeditor[MAX_TAM];

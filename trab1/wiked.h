@@ -9,7 +9,7 @@ typedef struct wiked WikED;
 
 WikED * inicializaWikED();
 void liberaWiki(WikED *);
-void leituraEntrada(FILE*, WikED*);
-void leituraFuncao(FILE*, WikED*, char*);
+// void leituraEntrada(FILE*, WikED*);
+void leituraFuncao(FILE*, FILE*, WikED*, char*);
 
 #endif 
