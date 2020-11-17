@@ -13,7 +13,10 @@ listaPagina * inicializaListaPagina();
 void imprimeListaPagina(listaPagina*);
 void liberaListaPagina(listaPagina*);
 
-celulaPagina* inicializaCelulaPagina(char*);
+void insereCelulaPaginaLista(listaPagina*, celulaPagina*);
+void retiraCelulaPaginaLista(FILE*, listaPagina*, char*);
+
+celulaPagina* inicializaCelulaPagina(char*, char*);
 void liberaCelulaPagina(celulaPagina*);
 
 Pagina* inicializaPagina(char *, char*); 
