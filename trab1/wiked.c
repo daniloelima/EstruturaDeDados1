@@ -37,14 +37,21 @@ void leituraFuncao(FILE * entrada, FILE* log, WikED * wiki, char * funcao){
         char nomepagina[MAX_TAM], arquivopagina[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepagina, arquivopagina);
 
-        insereCelulaPaginaLista(wiki->listapagi, inicializaCelulaPagina(nomepagina, arquivopagina));
+        if(procuraPaginaLista(wiki->listapagi, nomepagina)){
+            fprintf(log, "Pagina %s ja adicionada.\n", nomepagina);
+        }else{
+            insereCelulaPaginaLista(wiki->listapagi, inicializaCelulaPagina(nomepagina, arquivopagina));
+        }
+
     }
+
     else if(!strcmp(funcao, "RETIRAPAGINA")){
         char nomepagina[MAX_TAM];
         fscanf(entrada, " %s ", nomepagina);
-        
+
         retiraCelulaPaginaLista(log, wiki->listapagi, nomepagina);
     }
+
     else if(!strcmp(funcao, "INSEREEDITOR")){
         char nomeeditor[MAX_TAM];
         fscanf(entrada, " %s ", nomeeditor);
@@ -52,40 +59,56 @@ void leituraFuncao(FILE * entrada, FILE* log, WikED * wiki, char * funcao){
         // celulaEditor * novacelula;
         // novacelula = inicializaCelulaEditor(nomeeditor);
         // insereEditorLista(wiki->listaedit, novacelula);
-        
-        insereCelulaEditorLista(wiki->listaedit, inicializaCelulaEditor(nomeeditor));
-
+        if(procuraEditorLista(wiki->listaedit, nomeeditor)){
+            fprintf(log, "Editor %s ja adicionado.\n", nomeeditor);
+        }else{
+            insereCelulaEditorLista(wiki->listaedit, inicializaCelulaEditor(nomeeditor));
+        }
     }
-    else if(!strcmp(funcao, "RETIRAEDITOR")){
-        char nomeeditor[MAX_TAM];
-        fscanf(entrada, " %s ", nomeeditor);
-    }
+    // else if(!strcmp(funcao, "RETIRAEDITOR")){
+    //     char nomeeditor[MAX_TAM];
+    //     fscanf(entrada, " %s ", nomeeditor);
+    // }
     else if(!strcmp(funcao, "INSERECONTRIBUICAO")){
         char  nomepagina[MAX_TAM], nomeeditor[MAX_TAM], arquivocontribuicao[MAX_TAM];
         fscanf(entrada, " %s ", nomeeditor);
+        
+        Pagina * auxpagi = procuraPagina(wiki->listapagi ,nomepagina);
+        if(auxpagi != NULL){
+            insereCelulaListaContribuicao(retornaListaContribuicaoPagina(auxpagi),inicializaCelulaContribuicao(nomepagina, arquivocontribuicao, nomeeditor));
+        }
     }
     else if(!strcmp(funcao, "RETIRACONTRIBUICAO")){
         char  nomepagina[MAX_TAM], nomeeditor[MAX_TAM], arquivocontribuicao[MAX_TAM];
         fscanf(entrada, " %s ", nomeeditor);
+
+        fprintf(log, "Funcao --- nao suportada na versão da wiked");
     }
     else if(!strcmp(funcao, "INSERELINK")){
         char nomepaginaOrigem[MAX_TAM], nomepaginaDestino[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepaginaOrigem, nomepaginaDestino);
+
+        fprintf(log, "Funcao --- nao suportada na versão da wiked");
     }
     else if(!strcmp(funcao, "RETIRALINK")){
         char nomepaginaOrigem[MAX_TAM], nomepaginaDestino[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepaginaOrigem, nomepaginaDestino);
+
+        fprintf(log, "Funcao --- nao suportada na versão da wiked");
     }
     else if(!strcmp(funcao, "CAMINHO")){
         char nomepaginaOrigem[MAX_TAM], nomepaginaDestino[MAX_TAM];
         fscanf(entrada, " %s %s ", nomepaginaOrigem, nomepaginaDestino);
+
+        fprintf(log, "Funcao --- nao suportada na versão da wiked");
     }
     
     else if(!strcmp(funcao, "IMPRIMEWIKED")){
         // imprime a lista
+        fprintf(log, "Funcao --- nao suportada na versão da wiked");
     }
     else{
-        printf("\nfunção não encontrada! saindo do programa...\n");
-        exit(1);
+        fprintf(log, "função %s não encontrada! saindo do programa...\n", funcao);
+        return;
     }
 }
