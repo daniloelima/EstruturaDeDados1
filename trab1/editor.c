@@ -86,10 +86,3 @@ void liberaEditor(Editor * edit){
     free(edit->nome);
     free(edit);
 }
-
-Editor * inicializaEditor(char * nome){
-    Editor * novoedit = (Editor*) malloc(sizeof(Editor));
-    novoedit->nome = nome;
-
-    return novoedit;
-}

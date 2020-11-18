@@ -11,11 +11,13 @@ listaEditor * inicializaListaEditor();
 void imprimeListaEditor(listaEditor*);
 void liberaListaEditor(listaEditor*);
 
+
 void insereCelulaEditorLista(listaEditor*, celulaEditor*);
 
 celulaEditor* inicializaCelulaEditor(char*);
 void liberaCelulaEditor(celulaEditor*);
 
+Editor * procuraEditorLista(listaEditor*, char*);
 Editor* inicializaEditor(char *); 
 char* retornaNomeEditor(Editor*);
 void imprimeEditor(Editor*); 
