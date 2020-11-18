@@ -16,15 +16,20 @@ void liberaListaPagina(listaPagina*);
 void insereCelulaPaginaLista(listaPagina*, celulaPagina*);
 void retiraCelulaPaginaLista(FILE*, listaPagina*, char*);
 
+
+Pagina * procuraPaginaLista(listaPagina * lista, char* nomepagina);
+
+
 celulaPagina* inicializaCelulaPagina(char*, char*);
 void liberaCelulaPagina(celulaPagina*);
 
 Pagina* inicializaPagina(char *, char*); 
-void imprimePagina(Pagina*); 
-void liberaPagina(Pagina*);
+void imprimePagina(Pagina* pagina); 
+void liberaPagina(Pagina* pagina);
 
-char* retornaNomePagina(Pagina*);
-char* retornaNomeArquivo(Pagina*);
+listaContribuicao* retornaListaContribuicaoPagina(Pagina* pagina);
+char* retornaNomePagina(Pagina* pagina);
+FILE* retornaArquivoPagina(Pagina* pagina);
 
 
 #endif

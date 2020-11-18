@@ -38,7 +38,7 @@ void liberaListaPagina(listaPagina* lista){
 
 }
 
-void insereCelulaListaPagina(listaPagina* lista, celulaPagina* novacelula){
+void insereCelulaPaginaLista(listaPagina* lista, celulaPagina* novacelula){
     if(lista->pripagi == NULL){
         lista->pripagi = novacelula;
         lista->ultpagi = novacelula;
@@ -67,7 +67,7 @@ void retiraCelulaPaginaLista(FILE* log, listaPagina* lista, char* nomepagina){
         aux = aux->proxPag;
     }
 
-    fprintf(log, "ERRO: não existe a pagina %s", nomepagina);
+    fprintf(log, "ERRO: não existe a pagina %s\n", nomepagina);
 }
 
 celulaPagina* inicializaCelulaPagina(char* nomepagina, char* arquivopagina){
@@ -87,10 +87,26 @@ Pagina* inicializaPagina(char * nomepagina, char * nomearquivo){
 
     novapagina->nomePagina = strdup(nomepagina);
     novapagina->arqpagina = fopen(nomepagina, "w");
-    //novapagina->listaContribuicao =  inicializaListaContribuicao();
+    novapagina->listaContribuicao =  inicializaListaContribuicao();
     //novapagina->listaLinks = inicializaListaLink();
 
     return novapagina;
+}
+
+
+Pagina * procuraPaginaLista(listaPagina * lista, char* nomepagina){
+    celulaPagina * aux = lista->pripagi;
+
+    while(aux != NULL){
+        if(!strcmp(retornaNomePagina(aux->pagi), nomepagina)){
+            return aux->pagi;
+        }
+        
+        aux = aux->proxPag;
+    }
+    printf("ERRO: Pagina nao encontrada!\n");
+
+    return NULL;
 }
 
 void imprimePagina(Pagina* pagina){
@@ -106,5 +122,14 @@ void liberaPagina(Pagina* pagina){
     free(pagina);
 }
 
-char* retornaNomePagina(Pagina*);
-char* retornaNomeArquivo(Pagina*);
+listaContribuicao * retornaListaContribuicaoPagina(Pagina * pagina){
+    return pagina->listaContribuicao;
+}
+
+char* retornaNomePagina(Pagina* pagina){
+    return pagina->nomePagina;
+}
+
+FILE* retornaArquivoPagina(Pagina* pagina){
+    return pagina->arqpagina;
+}
