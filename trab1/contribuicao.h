@@ -2,9 +2,17 @@
 #define contribuicao_H_
 
 typedef struct contribuicao Contribuicao;
-typedef struct celcontribuicao CelContribuicao;
+typedef struct celcontribuicao celulaContribuicao;
 typedef struct listacontribuicao listaContribuicao;
 
-listaPagina* inicializaListaPagina();
+listaContribuicao * inicializaListaContribuicao();
+celulaContribuicao * inicializaCelulaContribuicao(char* nome, char* nomearq, char* nomeeditor);
+Contribuicao* inicializaContribuicao(char* nome, char* nomearq, char* editor);
+
+void insereCelulaListaContribuicao(listaContribuicao*, celulaContribuicao*);
+
+void liberaListaContribuicao(listaContribuicao *);
+void liberaCelulaContribuicao(celulaContribuicao *);
+void liberaContribuicao(Contribuicao *);
 
 #endif
